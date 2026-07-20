@@ -1,0 +1,19 @@
+{
+  "name": "bibscan-app",
+  "version": "1.0.0",
+  "description": "Sistema de Gestión Bibliotecaria Local - Primaria Benito Juárez",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": ["electron", "sqlite", "bibscan"],
+  "author": "Equipo de Desarrollo UTTT",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^9.0.0"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0"
+  }
+}
