@@ -1,8 +1,18 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('api', {
-    // Ejemplo de llamadas IPC expuestas al frontend
-    login: (credentials) => ipcRenderer.invoke('auth:login', credentials),
+    // Autenticación
+    login: (creds) => ipcRenderer.invoke('auth:login', creds),
+    
+    // Libros
     obtenerLibros: () => ipcRenderer.invoke('libros:obtenerTodos'),
-    registrarPrestamo: (data) => ipcRenderer.invoke('prestamos:registrar', data)
+    agregarLibro: (data) => ipcRenderer.invoke('libros:agregar', data),
+    
+    // Usuarios (Alumnos/Docentes)
+    obtenerUsuarios: () => ipcRenderer.invoke('usuarios:obtenerTodos'),
+    agregarUsuario: (data) => ipcRenderer.invoke('usuarios:agregar', data),
+    
+    // Circulación
+    registrarPrestamo: (data) => ipcRenderer.invoke('prestamos:registrar', data),
+    registrarDevolucion: (codigo) => ipcRenderer.invoke('prestamos:devolver', codigo)
 });

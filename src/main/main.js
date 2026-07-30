@@ -2,6 +2,11 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { db, initDatabase } = require('./db-config');
 
+// Importar los controladores del Backend
+const authController = require('./controllers/authController');
+const libroController = require('./controllers/libroController');
+const prestamoController = require('./controllers/prestamoController');
+
 let mainWindow;
 
 function createWindow() {
@@ -32,12 +37,8 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 });
 
-// Listener IPC de prueba
-ipcMain.handle('libros:obtenerTodos', () => {
-    return new Promise((resolve, reject) => {
-        db.all('SELECT * FROM LIBROS', [], (err, rows) => {
-            if (err) reject(err);
-            else resolve(rows);
-        });
-    });
-});
+// --- REGISTRO DE CANALES IPC DE ESCUCHA ---
+ipcMain.handle('auth:login', (event, creds) => authController.login(db, creds));
+ipcMain.handle('libros:obtenerTodos', () => libroController.obtenerLibros(db));
+ipcMain.handle('libros:agregar', (event, data) => libroController.agregarLibro(db, data));
+ipcMain.handle('prestamos:registrar', (event, data) => prestamoController.registrarPrestamo(db, data));
