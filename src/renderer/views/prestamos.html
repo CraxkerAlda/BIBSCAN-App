@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none';">
+    <title>BIBSCAN - Préstamos</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="prestamos">
+    <div id="app-shell" class="app-shell">
+        <aside id="sidebar-slot" class="sidebar"></aside>
+        <div class="app-main">
+            <header id="topbar-slot"></header>
+            <main class="content" id="page-content">
+                <div class="section-heading">
+                    <div>
+                        <h1>Préstamos y devoluciones</h1>
+                        <p class="muted">Registre movimientos con el lector de código de barras</p>
+                    </div>
+                </div>
+
+                <div class="segmented" role="tablist" aria-label="Tipo de operación">
+                    <button type="button" class="is-active" data-mode="prestamo" role="tab">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h4"/></svg>
+                        Préstamo
+                    </button>
+                    <button type="button" data-mode="devolucion" role="tab">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7V5a2 2 0 012-2h2M17 3h2a2 2 0 012 2v2M21 17v2a2 2 0 01-2 2h-2M7 21H5a2 2 0 01-2-2v-2"/><path d="M3 12h18"/></svg>
+                        Devolución
+                    </button>
+                </div>
+
+                <div class="grid grid--2">
+                    <section id="panel-prestamo" class="card">
+                        <div class="card__header">
+                            <h3 class="card__header-title">Registrar préstamo</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="field">
+                                <label for="scan-prestamo">Código de barras del libro</label>
+                                <input class="input scanner-input" type="text" id="scan-prestamo"
+                                       placeholder="Escaneando..." autocomplete="off" autofocus>
+                            </div>
+                            <div class="field">
+                                <label for="select-usuario">Usuario que solicita el préstamo</label>
+                                <select class="select" id="select-usuario"></select>
+                            </div>
+                            <div id="prestamo-aviso" class="alert alert--warning hidden">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg>
+                                <span>No hay usuarios activos registrados. Agregue usuarios en la sección Usuarios.</span>
+                            </div>
+                            <div id="result-prestamo"></div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn--primary" id="btn-prestamo">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h4"/></svg>
+                                    <span>Registrar préstamo</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="panel-devolucion" class="card hidden">
+                        <div class="card__header">
+                            <h3 class="card__header-title">Registrar devolución</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="field">
+                                <label for="scan-devolucion">Código de barras del libro</label>
+                                <input class="input scanner-input" type="text" id="scan-devolucion"
+                                       placeholder="Escaneando..." autocomplete="off">
+                            </div>
+                            <div id="result-devolucion"></div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn--success" id="btn-devolucion">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
+                                    <span>Registrar devolución</span>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+            <footer id="footer-slot" class="footer"></footer>
+        </div>
+    </div>
+
+    <script src="../js/ui.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/layout.js"></script>
+    <script src="../js/app-renderer.js"></script>
+</body>
+</html>

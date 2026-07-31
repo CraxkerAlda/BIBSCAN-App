@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none';">
+    <title>BIBSCAN - Iniciar sesión</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="login-page" data-page="login">
+    <div class="login-card">
+        <div class="login-card__logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <h1 class="login-card__title">BIBSCAN</h1>
+        <p class="login-card__subtitle">Sistema de Gestión Bibliotecaria · Primaria Benito Juárez</p>
+
+        <form id="login-form" novalidate>
+            <div class="field" id="field-usuario">
+                <label for="usuario">Usuario</label>
+                <input class="input" type="text" id="usuario" name="usuario" autocomplete="username"
+                       placeholder="Nombre de usuario" required autofocus>
+                <small class="field__error">Ingrese su usuario.</small>
+            </div>
+
+            <div class="field" id="field-contrasena">
+                <label for="contrasena">Contraseña</label>
+                <input class="input" type="password" id="contrasena" name="contrasena"
+                       autocomplete="current-password" placeholder="Contraseña" required>
+                <small class="field__error">Ingrese su contraseña.</small>
+            </div>
+
+            <div class="alert alert--error hidden" id="login-error" role="alert">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+                <span id="login-error-text"></span>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block" id="login-btn">Iniciar sesión</button>
+        </form>
+
+        <div class="login-hint">
+            Primer acceso: usuario <strong>admin</strong> · contraseña <strong>admin123</strong>
+        </div>
+    </div>
+
+    <script src="../js/ui.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/layout.js"></script>
+    <script src="../js/app-renderer.js"></script>
+</body>
+</html>
