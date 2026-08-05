@@ -1,31 +1,47 @@
 function obtenerUsuarios(db) {
     return new Promise((resolve, reject) => {
-        db.all('SELECT * FROM USUARIOS ORDER BY id_usuario DESC', [], (err, rows) => {
+        db.all('SELECT * FROM USUARIOS ORDER BY nombre_completo ASC', [], (err, rows) => {
             if (err) reject(err);
             else resolve(rows);
         });
     });
 }
 
-function agregarUsuario(db, usuarioData) {
-    const { nombre_completo, tipo, grado, grupo } = usuarioData;
+function agregarUsuario(db, { nombre_completo, tipo, grado, grupo }) {
     return new Promise((resolve, reject) => {
-        if (!nombre_completo || !nombre_completo.trim()) {
-            return resolve({ success: false, message: 'El nombre es obligatorio' });
-        }
-        if (tipo !== 'alumno' && tipo !== 'docente') {
-            return resolve({ success: false, message: 'El tipo debe ser alumno o docente' });
-        }
-
-        const query = `
-            INSERT INTO USUARIOS (nombre_completo, tipo, grado, grupo)
-            VALUES (?, ?, ?, ?)
-        `;
-        db.run(query, [nombre_completo.trim(), tipo, grado || null, grupo || null], function(err) {
+        const query = 'INSERT INTO USUARIOS (nombre_completo, tipo, grado, grupo) VALUES (?, ?, ?, ?)';
+        db.run(query, [nombre_completo, tipo, grado, grupo], function(err) {
             if (err) resolve({ success: false, message: err.message });
             else resolve({ success: true, id_usuario: this.lastID });
         });
     });
 }
 
-module.exports = { obtenerUsuarios, agregarUsuario };
+function editarUsuario(db, { id_usuario, nombre_completo, tipo, grado, grupo }) {
+    return new Promise((resolve, reject) => {
+        const query = `
+            UPDATE USUARIOS 
+            SET nombre_completo = ?, tipo = ?, grado = ?, grupo = ? 
+            WHERE id_usuario = ?
+        `;
+        db.run(query, [nombre_completo, tipo, grado, grupo, id_usuario], function(err) {
+            if (err) resolve({ success: false, message: err.message });
+            else resolve({ success: true, message: 'Usuario actualizado correctamente.' });
+        });
+    });
+}
+
+function cambiarEstadoUsuario(db, { id_usuario, activo }) {
+    return new Promise((resolve, reject) => {
+        const query = 'UPDATE USUARIOS SET activo = ? WHERE id_usuario = ?';
+        db.run(query, [activo, id_usuario], function(err) {
+            if (err) resolve({ success: false, message: err.message });
+            else resolve({ 
+                success: true, 
+                message: activo === 1 ? 'Usuario activado correctamente.' : 'Usuario desactivado correctamente.' 
+            });
+        });
+    });
+}
+
+module.exports = { obtenerUsuarios, agregarUsuario, editarUsuario, cambiarEstadoUsuario };
