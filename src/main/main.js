@@ -3,12 +3,10 @@ const path = require('path');
 const { db, initDatabase } = require('./db-config');
 
 // Importar los controladores del Backend
-const authController = require('./controllers/authControllers');
+const authController = require('./controllers/authController');
 const libroController = require('./controllers/libroController');
 const usuarioController = require('./controllers/usuarioController');
 const prestamoController = require('./controllers/prestamoController');
-const usuarioController = require('./controllers/usuarioController');
-const devolucionController = require('./controllers/devolucionController');
 
 let mainWindow;
 
@@ -57,6 +55,8 @@ ipcMain.handle('usuarios:agregar', (event, data) => usuarioController.agregarUsu
 ipcMain.handle('usuarios:editar', (event, data) => usuarioController.editarUsuario(db, data));
 ipcMain.handle('usuarios:cambiarEstado', (event, data) => usuarioController.cambiarEstadoUsuario(db, data));
 
-// Circulación (Préstamos y Devoluciones)
+// Circulación (Préstamos, Extensión y Devoluciones)
+ipcMain.handle('prestamos:obtenerActivos', () => prestamoController.obtenerPrestamosActivos(db));
 ipcMain.handle('prestamos:registrar', (event, data) => prestamoController.registrarPrestamo(db, data));
+ipcMain.handle('prestamos:extender', (event, data) => prestamoController.extenderPrestamo(db, data));
 ipcMain.handle('prestamos:devolver', (event, codigo) => prestamoController.registrarDevolucion(db, codigo));
