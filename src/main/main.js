@@ -3,10 +3,12 @@ const path = require('path');
 const { db, initDatabase } = require('./db-config');
 
 // Importar los controladores del Backend
-const authController = require('./controllers/authController');
+const authController = require('./controllers/authControllers');
 const libroController = require('./controllers/libroController');
 const usuarioController = require('./controllers/usuarioController');
 const prestamoController = require('./controllers/prestamoController');
+const usuarioController = require('./controllers/usuarioController');
+const devolucionController = require('./controllers/devolucionController');
 
 let mainWindow;
 

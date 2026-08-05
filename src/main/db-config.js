@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
+const bcrypt = require('bcryptjs');
 
 // Crear carpeta data/ si no existe
 const dataDir = path.join(__dirname, '../../data');
@@ -70,6 +71,13 @@ function initDatabase() {
                 rol TEXT NOT NULL CHECK(rol IN ('administrador', 'docente'))
             )
         `);
+
+        // Semilla idempotente: administrador inicial
+        const adminHash = bcrypt.hashSync('admin123', 10);
+        db.run(
+            'INSERT OR IGNORE INTO SISTEMA_USUARIOS (nombre_usuario, contrasena_hash, rol) VALUES (?, ?, ?)',
+            ['admin', adminHash, 'administrador']
+        );
     });
 }
 
