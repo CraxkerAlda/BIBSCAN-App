@@ -15,8 +15,13 @@ contextBridge.exposeInMainWorld('api', {
     agregarUsuario: (data) => ipcRenderer.invoke('usuarios:agregar', data),
     editarUsuario: (data) => ipcRenderer.invoke('usuarios:editar', data),
     cambiarEstadoUsuario: (data) => ipcRenderer.invoke('usuarios:cambiarEstado', data),
-    
+
     // Circulación
+    obtenerPrestamosActivos: () => ipcRenderer.invoke('prestamos:obtenerActivos'),
     registrarPrestamo: (data) => ipcRenderer.invoke('prestamos:registrar', data),
+    extenderPrestamo: (data) => ipcRenderer.invoke('prestamos:extender', data),
     registrarDevolucion: (codigo) => ipcRenderer.invoke('prestamos:devolver', codigo)
+
+
+    
 });
