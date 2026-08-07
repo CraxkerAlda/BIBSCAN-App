@@ -18,7 +18,7 @@
   }
 }
 
-/*
+/**
  * Proyecto: BIBSCAN — Sistema de Gestión Bibliotecaria
  * Autores:
  *   - América Cristal Canuto Julio
@@ -32,4 +32,4 @@
  * Los derechos morales pertenecen a sus autores.
  * Queda prohibida la eliminación de los créditos originales y el uso o 
  * modificación del código sin autorización de los autores.
- */
+ **/
