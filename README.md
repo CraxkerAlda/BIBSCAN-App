@@ -1,8 +1,38 @@
+---
 # BIBSCAN — Sistema de Gestión Bibliotecaria
 
 **BIBSCAN** es una aplicación de escritorio nativa diseñada para la **Escuela Primaria "Benito Juárez"** (CCT: 13DPR0205U) ubicada en Tepeji de Ocampo, Hidalgo. 
 
 El sistema optimiza y automatiza los procesos de inventario de libros, control de usuarios (alumnos/docentes) y circulación (préstamos y devoluciones) utilizando lectores de código de barras USB en un entorno **100% offline** (sin necesidad de conexión a internet).
+
+---
+
+## 🎓 Información Académica e Institucional
+
+* **Nombre del Proyecto:** BIBSCAN — Sistema de Gestión Bibliotecaria
+* **Universidad:** Universidad Tecnológica de Tula-Tepeji (UTTT)
+* **Programa Educativo:** Tecnologías de la Información, Ingeniería en Desarrollo y Gestión de Software
+* **Asignatura:** ADMINISTRACIÓN DE PROYECTOS DE TI
+
+### 👥 Autores (Estudiantes):
+* América Cristal Canuto Julio
+* David Esau Ramirez Aguilar
+* Jaime Aldair Andrade Rojo
+
+### 🏛️ Institución Beneficiaria & Asesoría:
+* **Empresa / Escuela:** Escuela Primaria "Benito Juárez" (CCT: 13DPR0205U)
+* **Director de la Escuela:** Lic. Alejandro Mendoza Márquez
+* **Asesora Académica:** Ing. Odisey Yasmin Porras Beltrán
+* **Asesores Colaboradores (2026):** N/A
+
+---
+
+## 📄 Licencia y Derechos de Autor
+
+> **Aviso de Propiedad Intelectual:**  
+> Este software fue desarrollado durante el cuatrimestre **mayo-agosto 2026**.  
+> Los derechos morales pertenecen a sus autores (*América Cristal Canuto Julio, David Esau Ramirez Aguilar, Jaime Aldair Andrade Rojo*).  
+> **Queda prohibida la eliminación de los créditos originales y el uso o modificación del código sin autorización de los autores.**
 
 ---
 
