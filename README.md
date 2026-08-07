@@ -1,4 +1,3 @@
----
 # BIBSCAN — Sistema de Gestión Bibliotecaria
 
 **BIBSCAN** es una aplicación de escritorio nativa diseñada para la **Escuela Primaria "Benito Juárez"** (CCT: 13DPR0205U) ubicada en Tepeji de Ocampo, Hidalgo. 
